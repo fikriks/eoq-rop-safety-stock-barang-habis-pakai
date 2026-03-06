@@ -1,0 +1,213 @@
+/* Global Styles */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    overflow-x: hidden;
+    letter-spacing: -0.01em;
+}
+
+.fw-800 { font-weight: 800; }
+.fw-700 { font-weight: 700; }
+.fw-600 { font-weight: 600; }
+.fw-500 { font-weight: 500; }
+.font-mono { font-family: 'JetBrains Mono', monospace !important; }
+
+/* Navbar Customization */
+.navbar {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #dee2e6;
+    z-index: 1040;
+    height: 60px;
+}
+.navbar-brand {
+    font-weight: 800;
+    color: #000000 !important;
+    letter-spacing: -0.5px;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 20px 0 0;
+    background-color: #ffffff;
+    border-right: 1px solid #dee2e6;
+    width: 240px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar .nav-link {
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.875rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0;
+    transition: all 0.2s;
+}
+.sidebar .nav-link:hover {
+    background-color: #f8f9fa;
+    color: #000000;
+}
+.sidebar .nav-link.active {
+    background-color: #000000;
+    color: #ffffff;
+}
+.sidebar .nav-link i {
+    margin-right: 12px;
+    font-size: 1.1rem;
+}
+
+.sidebar-heading {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    padding: 1.5rem 1.5rem 0.5rem;
+    color: #adb5bd;
+    letter-spacing: 0.5px;
+}
+
+/* Main Content Area */
+main {
+    padding-top: 20px;
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 60px);
+    margin-left: 240px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Mobile Sidebar Overlay */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.1);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    main {
+        margin-left: 0;
+    }
+    .sidebar-overlay.show {
+        display: block;
+    }
+}
+
+/* Flat Minimalism Elements */
+.card {
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    margin-bottom: 1.5rem;
+}
+.card-header {
+    background-color: #ffffff;
+    color: #212529;
+    border-bottom: 1px solid #f1f1f1;
+    border-radius: 12px 12px 0 0 !important;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 1rem 1.25rem;
+}
+
+/* UI Components */
+.btn {
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.form-control, .form-select {
+    border: 1px solid #e0e0e0 !important;
+    transition: all 0.2s;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #000000 !important;
+    box-shadow: none;
+    background-color: #ffffff;
+}
+.form-control::placeholder, .form-select::placeholder {
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.5;
+}
+
+/* Table Customization */
+.table thead th {
+    border-top: none;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #dee2e6;
+    text-transform: uppercase;
+}
+.table td {
+    vertical-align: middle;
+    font-size: 0.85rem;
+    padding: 1rem 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+/* Revert text elements in tables back to main font */
+.table td div, 
+.table td .nama-barang, 
+.table td .badge,
+.table td span:not(.font-mono),
+.table td button {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    letter-spacing: -0.02em;
+}
+
+/* Pagination Styling */
+.pagination {
+    gap: 5px;
+}
+.page-item .page-link {
+    border: 1px solid #dee2e6;
+    color: #000000;
+    font-weight: 700;
+    border-radius: 8px !important;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+.page-item.active .page-link {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    color: #ffffff !important;
+}
+.page-item .page-link:hover {
+    background-color: #f8f9fa;
+    color: #000000;
+}
+
+/* Badge Styles */
+.bg-soft-success { background-color: #e8f5e9 !important; }
+.bg-soft-danger { background-color: #fbe9e7 !important; }
+
+/* Footer */
+footer {
+    border-top: 1px solid #dee2e6;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    color: #adb5bd;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
