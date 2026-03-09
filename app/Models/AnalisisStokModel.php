@@ -11,6 +11,8 @@ class AnalisisStokModel extends Model
     protected $useAutoIncrement = true;
     protected $allowedFields    = [
         'id_barang', 
+        'bulan',
+        'tahun',
         'permintaan_tahunan', 
         'biaya_pemesanan', 
         'biaya_penyimpanan', 

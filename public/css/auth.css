@@ -1,100 +1,147 @@
+/* Auth Page Styling - Minimalism Flat */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #ffffff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #fcfcfc;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
     margin: 0;
+}
+
+.login-wrapper {
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    color: #1a1a1a;
+    padding: 1.5rem;
 }
 
-.login-container {
+.login-card {
     background: #ffffff;
-    padding: 2.5rem;
-    border: 1px solid #e0e0e0;
     width: 100%;
-    max-width: 380px;
+    max-width: 420px;
+    padding: 3rem 2.5rem;
+    border: 1px solid #000000;
+    border-radius: 0; /* Sharp Edges */
+    position: relative;
 }
 
-.login-header {
-    text-align: center;
-    margin-bottom: 2rem;
+/* Pseudo-shadow for Flat Aesthetic */
+.login-card::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: -7px;
+    bottom: -7px;
+    background: #000000;
+    z-index: -1;
 }
 
-.login-header h1 {
+.login-brand {
+    text-align: left;
+}
+
+.brand-icon {
+    color: #000000;
+}
+
+.brand-name {
     font-weight: 800;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin: 0;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.04em;
+    line-height: 1;
 }
 
-.login-header p {
-    font-weight: 600;
-    color: #888;
-    font-size: 0.8rem;
-    margin-top: 0.25rem;
-}
-
-.form-label {
-    display: block;
+.brand-tagline {
+    font-size: 0.7rem;
     font-weight: 700;
-    font-size: 0.75rem;
-    margin-bottom: 6px;
-    color: #333;
+    color: #888;
+    margin-top: 0.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
-.form-control {
+/* Custom Form Elements */
+.custom-label {
+    display: block;
+    font-weight: 800;
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+.custom-input {
     width: 100%;
-    padding: 12px;
+    background: #f8f9fa;
     border: 1px solid #e0e0e0;
-    border-radius: 4px;
-    font-family: inherit;
-    font-weight: 500;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-    background-color: #fafafa;
+    border-radius: 0;
+    padding: 14px 16px;
     font-size: 0.9rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    transition: all 0.2s;
 }
 
-.form-control:focus {
+.custom-input:focus {
     outline: none;
     border-color: #000000;
-    background-color: #ffffff;
+    background: #ffffff;
+    box-shadow: none;
 }
 
-.form-control::placeholder {
-    color: #000000;
-    opacity: 0.25;
+.custom-input::placeholder {
+    color: #adb5bd;
+    font-size: 0.85rem;
 }
 
-.btn-login {
+/* Button Flat Minimalism */
+.btn-primary-flat {
     width: 100%;
-    padding: 12px;
     background: #000000;
     color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 0.9rem;
+    border: 1px solid #000000;
+    border-radius: 0;
+    padding: 14px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
     cursor: pointer;
-    margin-top: 1rem;
-    transition: opacity 0.2s;
 }
 
-.btn-login:hover {
-    opacity: 0.85;
+.btn-primary-flat:hover {
+    background: #ffffff;
+    color: #000000;
 }
 
-.footer-text {
-    margin-top: 2rem;
-    text-align: center;
-    font-weight: 600;
+.btn-primary-flat:active {
+    transform: translate(2px, 2px);
+}
+
+.footer-copy {
     font-size: 0.65rem;
-    color: #bbb;
+    font-weight: 700;
+    color: #adb5bd;
+    text-align: left;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
-/* Notyf Overrides for Minimalist */
+/* Notyf Flat Override */
 .notyf__toast {
-    border-radius: 4px !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px 0 #000 !important;
+    border: 1px solid #000 !important;
+}
+.notyf__message {
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }

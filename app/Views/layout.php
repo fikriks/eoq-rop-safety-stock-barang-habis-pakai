@@ -33,9 +33,7 @@
                 <i class="bi bi-list fs-3"></i>
             </button>
             <a class="navbar-brand d-flex align-items-center" href="/dashboard">
-                <i class="bi bi-box-seam me-2 fs-4"></i>
-                <span class="d-none d-sm-inline">INVENTORY SYSTEM</span>
-                <span class="d-inline d-sm-none">INVENTORY</span>
+                <img src="<?= base_url('logo.png') ?>" alt="Logo" height="70">
             </a>
         </div>
         
