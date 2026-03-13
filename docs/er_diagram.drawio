@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-03-13T00:00:00.000Z" agent="5.0" version="21.6.8" type="device">
+  <diagram id="Full-ERD" name="ER Diagram Inventaris">
+    <mxGraphModel dx="1200" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Tabel Pengguna (ID: 100) -->
+        <mxCell id="100" value="pengguna&#xa;--------------------------&#xa;+ id (PK)&#xa;  username&#xa;  password&#xa;  nama_lengkap&#xa;  peran" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Tabel Kodering (ID: 200) -->
+        <mxCell id="200" value="kodering&#xa;--------------------------&#xa;+ id (PK)&#xa;  kode&#xa;  nama&#xa;  deskripsi" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Tabel Barang (ID: 300) -->
+        <mxCell id="300" value="barang&#xa;--------------------------&#xa;+ id (PK)&#xa;# kodering_id (FK)&#xa;  nama&#xa;  satuan&#xa;  stok_minimal&#xa;  stok_saat_ini" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="320" y="220" width="180" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Tabel Harga Barang (ID: 400) -->
+        <mxCell id="400" value="harga_barang&#xa;--------------------------&#xa;+ id (PK)&#xa;# barang_id (FK)&#xa;  harga&#xa;  tanggal_berlaku&#xa;  is_aktif" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Tabel Supplier (ID: 500) -->
+        <mxCell id="500" value="supplier&#xa;--------------------------&#xa;+ id (PK)&#xa;  nama&#xa;  alamat&#xa;  telepon&#xa;  email" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="840" y="250" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Tabel Transaksi (ID: 600) -->
+        <mxCell id="600" value="transaksi&#xa;--------------------------&#xa;+ id (PK)&#xa;# barang_id (FK)&#xa;# pengguna_id (FK)&#xa;# harga_barang_id (FK)&#xa;# supplier_id (FK)&#xa;  jenis&#xa;  jumlah&#xa;  tanggal" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="580" y="200" width="200" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Tabel Analisis Stok (ID: 700) -->
+        <mxCell id="700" value="analisis_stok&#xa;--------------------------&#xa;+ id (PK)&#xa;# barang_id (FK)&#xa;  eoq&#xa;  rop&#xa;  safety_stock&#xa;  bulan&#xa;  tahun" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="580" y="30" width="200" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- RELASI LINES -->
+        
+        <!-- 200 (Kodering) to 300 (Barang) -->
+        <mxCell id="L1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;endArrow=diamondThin;endFill=0;" edge="1" parent="1" source="200" target="300">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 300 (Barang) to 400 (Harga Barang) -->
+        <mxCell id="L2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;endArrow=diamondThin;endFill=0;" edge="1" parent="1" source="300" target="400">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 300 (Barang) to 700 (Analisis Stok) -->
+        <mxCell id="L3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;endArrow=diamondThin;endFill=0;" edge="1" parent="1" source="300" target="700">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="290" />
+              <mxPoint x="530" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 300 (Barang) to 600 (Transaksi) -->
+        <mxCell id="L4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;endArrow=diamondThin;endFill=0;" edge="1" parent="1" source="300" target="600">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 100 (Pengguna) to 600 (Transaksi) -->
+        <mxCell id="L5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;endArrow=diamondThin;endFill=0;" edge="1" parent="1" source="100" target="600">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 400 (Harga Barang) to 600 (Transaksi) -->
+        <mxCell id="L6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;endArrow=diamondThin;endFill=0;" edge="1" parent="1" source="400" target="600">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="180" />
+              <mxPoint x="630" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 500 (Supplier) to 600 (Transaksi) -->
+        <mxCell id="L7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=1;endArrow=diamondThin;endFill=0;" edge="1" parent="1" source="500" target="600">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

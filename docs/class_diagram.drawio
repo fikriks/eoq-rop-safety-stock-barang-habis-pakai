@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-03-13T00:00:00.000Z" agent="5.0" version="21.6.8" type="device">
+  <diagram id="Class-Diagram" name="Class Diagram Inventaris">
+    <mxGraphModel dx="1422" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ========================================================== -->
+        <!-- CONTROLLERS (Left Side) -->
+        <!-- ========================================================== -->
+
+        <!-- BaseController (ID: 10) -->
+        <mxCell id="10" value="BaseController&#xa;--------------------------&#xa;# request : RequestInterface&#xa;# response : ResponseInterface&#xa;# logger : LoggerInterface&#xa;--------------------------&#xa;+ initController()" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="220" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- AuthController (ID: 11) -->
+        <mxCell id="11" value="AuthController&#xa;--------------------------&#xa;--------------------------&#xa;+ login()&#xa;+ prosesLogin()&#xa;+ logout()" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="220" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- BarangController (ID: 12) -->
+        <mxCell id="12" value="BarangController&#xa;--------------------------&#xa;--------------------------&#xa;+ index()&#xa;+ tambah()&#xa;+ simpan()&#xa;+ edit()&#xa;+ update()&#xa;+ hapus()" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="220" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- TransaksiController (ID: 13) -->
+        <mxCell id="13" value="TransaksiController&#xa;--------------------------&#xa;--------------------------&#xa;+ index()&#xa;+ masuk()&#xa;+ keluar()&#xa;+ simpan()" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="480" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- AnalisisController (ID: 14) -->
+        <mxCell id="14" value="AnalisisController&#xa;--------------------------&#xa;--------------------------&#xa;+ index()&#xa;+ hitung()&#xa;+ simpan()&#xa;+ cetak()" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="610" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================================== -->
+        <!-- MODELS (Right Side) -->
+        <!-- ========================================================== -->
+
+        <!-- Abstract CodeIgniter Model (ID: 50) -->
+        <mxCell id="50" value="CodeIgniter\Model&#xa;--------------------------&#xa;# table : string&#xa;# primaryKey : string&#xa;# allowedFields : array&#xa;--------------------------&#xa;+ find(id)&#xa;+ findAll()&#xa;+ insert(data)&#xa;+ update(id, data)&#xa;+ delete(id)" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="40" width="220" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- BarangModel (ID: 51) -->
+        <mxCell id="51" value="BarangModel&#xa;--------------------------&#xa;--------------------------&#xa;+ getBarangWithKodering()&#xa;+ updateStok(id, jumlah)" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="600" y="240" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- TransaksiModel (ID: 52) -->
+        <mxCell id="52" value="TransaksiModel&#xa;--------------------------&#xa;--------------------------&#xa;+ getHistoryTransaksi()&#xa;+ getTotalPermintaan(barang_id)" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="600" y="350" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- AnalisisStokModel (ID: 53) -->
+        <mxCell id="53" value="AnalisisStokModel&#xa;--------------------------&#xa;--------------------------&#xa;+ getAnalisisByPeriode()&#xa;+ simpanAnalisis(data)" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="600" y="460" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- PenggunaModel (ID: 54) -->
+        <mxCell id="54" value="PenggunaModel&#xa;--------------------------&#xa;--------------------------&#xa;+ getPenggunaByUsername()" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="600" y="570" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ========================================================== -->
+        <!-- RELATIONSHIPS -->
+        <!-- ========================================================== -->
+
+        <!-- INHERITANCE: Sub-controllers to BaseController -->
+        <mxCell id="R1" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;strokeColor=#000000;" edge="1" parent="1" source="11" target="10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="R2" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="12" target="10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="20" y="385" /><mxPoint x="20" y="95" /></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R3" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="13" target="10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="10" y="530" /><mxPoint x="10" y="95" /></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R4" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="14" target="10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="5" y="660" /><mxPoint x="5" y="95" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- INHERITANCE: Sub-models to CodeIgniter\Model -->
+        <mxCell id="R5" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;strokeColor=#000000;" edge="1" parent="1" source="51" target="50" />
+        <mxCell id="R6" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=1;exitY=0.5;entryX=1;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="52" target="50">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="840" y="390" /><mxPoint x="840" y="120" /></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R7" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=1;exitY=0.5;entryX=1;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="53" target="50">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="850" y="500" /><mxPoint x="850" y="120" /></Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R8" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=1;exitY=0.5;entryX=1;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="54" target="50">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="860" y="600" /><mxPoint x="860" y="120" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- USAGE: Controllers using Models (Dependency) -->
+        <mxCell id="D1" value="&lt;&lt;uses&gt;&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="11" target="54" />
+        <mxCell id="D2" value="&lt;&lt;uses&gt;&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="12" target="51" />
+        <mxCell id="D3" value="&lt;&lt;uses&gt;&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="13" target="52" />
+        <mxCell id="D4" value="&lt;&lt;uses&gt;&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="14" target="53" />
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

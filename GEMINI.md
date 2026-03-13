@@ -92,3 +92,11 @@ php spark test
 - `php spark make:migration <Name>`: Create a new database migration.
 - `php spark migrate`: Run pending migrations.
 - `php spark db:seed <Name>`: Run a specific seeder.
+
+## Documentation
+- **UML Diagrams:** Terletak di folder `docs/` dalam format `.drawio`.
+  - `er_diagram.drawio`: Struktur database lengkap (7 tabel).
+  - `class_diagram.drawio`: Arsitektur sistem (Controllers & Models).
+  - `use_case_diagram.drawio`: Fungsionalitas pengguna (Admin & Petugas).
+  - `activity_diagram.drawio`: Alur kerja proses bisnis (Multi-halaman).
+  - `sequence_diagram.drawio`: Interaksi antar objek (Multi-halaman).

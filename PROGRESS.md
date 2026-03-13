@@ -1,6 +1,13 @@
 # Progress Report - Inventory Management System
 
-## Terbaru (Redesign & Advanced Analytics)
+## Terbaru (Redesign, Advanced Analytics & Documentation)
+*   **Comprehensive UML Documentation:**
+    *   Membuat **ER Diagram (ERD)** yang mencakup 7 tabel utama beserta relasinya.
+    *   Membuat **Class Diagram** yang memetakan arsitektur MVC (Controllers & Models).
+    *   Membuat **Use Case Diagram** untuk memetakan peran Admin dan Petugas.
+    *   Membuat **Activity Diagram** detail untuk alur Login, Master Data, Transaksi, dan Analisis.
+    *   Membuat **Sequence Diagram** standar dengan *activation bars* untuk interaksi antar objek.
+    *   Semua diagram tersedia dalam format `.drawio` di folder `docs/` untuk kemudahan pengeditan.
 *   **Auth Redesign:** Merancang ulang halaman login dengan gaya **Simple Minimalism Flat (Neobrutalist)**. Menggunakan bayangan solid, sudut tajam, dan kontras tinggi untuk kesan modern.
 *   **Advanced Safety Stock:** Memperbarui metodologi perhitungan dari rumus linear sederhana ke **Standard Deviation Demand**. Ini jauh lebih akurat untuk Barang Habis Pakai (BHP) yang pengambilannya tidak rutin/sporadis.
 *   **Monthly Historical Analysis:**
