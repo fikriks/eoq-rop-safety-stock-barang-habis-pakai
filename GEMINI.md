@@ -78,7 +78,7 @@ php spark test
 ### Styling
 - **CSS Framework:** Bootstrap 5.
 - **Color Schema:** Black & White (Hitam Putih) dengan kontras tinggi.
-- **Tipografi:** **Nunito** (Google Fonts).
+- **Tipografi:** **Plus Jakarta Sans** (Google Fonts) & **JetBrains Mono**.
 - **Layouts:** Gunakan CodeIgniter 4 View Layouts (`app/Views/layout.php`) untuk menjaga konsistensi. Hindari penggunaan border-radius (gunakan sudut tajam) untuk kesan minimalis/brutalist.
 
 ### Coding Style
