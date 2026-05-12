@@ -112,6 +112,33 @@
         <mxCell id="D3" value="&lt;&lt;uses&gt;&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="13" target="52" />
         <mxCell id="D4" value="&lt;&lt;uses&gt;&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="14" target="53" />
 
+        <!-- SupplierController (ID: 15) -->
+        <mxCell id="15" value="SupplierController&#xa;--------------------------&#xa;--------------------------&#xa;+ index()&#xa;+ tambah()&#xa;+ simpan()&#xa;+ edit()&#xa;+ update()&#xa;+ hapus()" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="730" width="220" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- SupplierModel (ID: 55) -->
+        <mxCell id="55" value="SupplierModel&#xa;--------------------------&#xa;--------------------------" style="shape=rectangle;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="600" y="660" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- INHERITANCE: SupplierController to BaseController -->
+        <mxCell id="R9" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="15" target="10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="0" y="795" /><mxPoint x="0" y="95" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- INHERITANCE: SupplierModel to CodeIgniter\Model -->
+        <mxCell id="R10" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=1;exitY=0.5;entryX=1;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="55" target="50">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points"><mxPoint x="870" y="690" /><mxPoint x="870" y="120" /></Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- USAGE: SupplierController uses SupplierModel -->
+        <mxCell id="D5" value="&lt;&lt;uses&gt;&gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#000000;" edge="1" parent="1" source="15" target="55" />
+
       </root>
     </mxGraphModel>
   </diagram>

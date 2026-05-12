@@ -141,4 +141,54 @@
     </mxGraphModel>
   </diagram>
 
+  <!-- ========================================== -->
+  <!-- PAGE 5: SEQUENCE - CRUD BARANG             -->
+  <!-- ========================================== -->
+  <diagram id="seq_barang" name="5. CRUD Barang">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="B_Act" value="Admin" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;participant=umlActor;" vertex="1" parent="1"><mxGeometry x="60" y="40" width="20" height="440" as="geometry" /></mxCell>
+        <mxCell id="B_View" value=":BarangView" style="shape=umlLifeline;whiteSpace=wrap;html=1;container=1;" vertex="1" parent="1"><mxGeometry x="180" y="40" width="100" height="440" as="geometry" /></mxCell>
+        <mxCell id="B_Ctrl" value=":BarangCtrl" style="shape=umlLifeline;whiteSpace=wrap;html=1;container=1;" vertex="1" parent="1"><mxGeometry x="360" y="40" width="120" height="440" as="geometry" /></mxCell>
+        <mxCell id="B_Mod_S" value=":BarangMod" style="shape=umlLifeline;whiteSpace=wrap;html=1;container=1;" vertex="1" parent="1"><mxGeometry x="560" y="40" width="120" height="440" as="geometry" /></mxCell>
+
+        <mxCell id="BA1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="B_View"><mxGeometry x="45" y="80" width="10" height="280" as="geometry" /></mxCell>
+        <mxCell id="BA2" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="B_Ctrl"><mxGeometry x="55" y="100" width="10" height="240" as="geometry" /></mxCell>
+        <mxCell id="BA3" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="B_Mod_S"><mxGeometry x="55" y="130" width="10" height="60" as="geometry" /></mxCell>
+
+        <mxCell id="BM1" value="inputData(data)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" target="BA1"><mxGeometry relative="1" as="geometry"><mxPoint x="70" y="120" as="sourcePoint" /></mxGeometry></mxCell>
+        <mxCell id="BM2" value="simpan()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="BA1" target="BA2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="BM3" value="insert(data)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="BA2" target="BA3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="BM4" value="success" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="BA2" target="BA1"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <!-- ========================================== -->
+  <!-- PAGE 6: SEQUENCE - CRUD SUPPLIER           -->
+  <!-- ========================================== -->
+  <diagram id="seq_supplier" name="6. CRUD Supplier">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="S_Act" value="Admin" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;participant=umlActor;" vertex="1" parent="1"><mxGeometry x="60" y="40" width="20" height="440" as="geometry" /></mxCell>
+        <mxCell id="S_View" value=":SupplierView" style="shape=umlLifeline;whiteSpace=wrap;html=1;container=1;" vertex="1" parent="1"><mxGeometry x="180" y="40" width="100" height="440" as="geometry" /></mxCell>
+        <mxCell id="S_Ctrl" value=":SupplierCtrl" style="shape=umlLifeline;whiteSpace=wrap;html=1;container=1;" vertex="1" parent="1"><mxGeometry x="360" y="40" width="120" height="440" as="geometry" /></mxCell>
+        <mxCell id="S_Mod" value=":SupplierMod" style="shape=umlLifeline;whiteSpace=wrap;html=1;container=1;" vertex="1" parent="1"><mxGeometry x="560" y="40" width="120" height="440" as="geometry" /></mxCell>
+
+        <mxCell id="SA1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="S_View"><mxGeometry x="45" y="80" width="10" height="280" as="geometry" /></mxCell>
+        <mxCell id="SA2" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="S_Ctrl"><mxGeometry x="55" y="100" width="10" height="240" as="geometry" /></mxCell>
+        <mxCell id="SA3" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="S_Mod"><mxGeometry x="55" y="130" width="10" height="60" as="geometry" /></mxCell>
+
+        <mxCell id="SM1" value="inputData(data)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" target="SA1"><mxGeometry relative="1" as="geometry"><mxPoint x="70" y="120" as="sourcePoint" /></mxGeometry></mxCell>
+        <mxCell id="SM2" value="simpan()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="SA1" target="SA2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="SM3" value="insert(data)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="SA2" target="SA3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="SM4" value="success" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="SA2" target="SA1"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
 </mxfile>

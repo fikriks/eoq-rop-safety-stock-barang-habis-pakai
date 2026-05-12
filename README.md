@@ -1,69 +1,61 @@
-# CodeIgniter 4 Application Starter
+# EOQ, ROP, and Safety Stock for Consumables
 
-## What is CodeIgniter?
+## Project Context
+Inventory management system for consumables (*barang habis pakai*) implementing **EOQ**, **ROP**, and **Safety Stock** methodologies. Built for the **Kantor Cabang Dinas Pendidikan Wilayah X Provinsi Jawa Barat**.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Features
+- **Dashboard:** Real-time summary of stock levels and inventory analysis.
+- **Master Data:** Management of Items, Kodering (Accounting Codes), Prices, and Suppliers.
+- **Transactions:** Automated stock adjustment for incoming and outgoing goods.
+- **Inventory Analysis:** Automatic calculation of:
+  - **EOQ (Economic Order Quantity):** Optimal order size to minimize costs.
+  - **ROP (Reorder Point):** Stock level to trigger new orders.
+  - **Safety Stock:** Buffer stock calculated using Standard Deviation Demand for accuracy.
+- **Historical Analysis:** Monthly and yearly analysis with 12-month moving average prediction.
+- **Reports:** Printable stock reports and transaction history.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Technical Stack
+- **Framework:** CodeIgniter 4.x
+- **UI Framework:** Bootstrap 5
+- **Style:** Simple Minimalism Flat (Neobrutalist) - Black & White, high contrast, sharp corners.
+- **Language:** PHP 8.2+
+- **Database:** MySQL/MariaDB
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Getting Started
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+### Prerequisites
+- PHP 8.2+ with `intl`, `mbstring`, `json`, `mysqlnd`, and `libcurl` extensions.
+- Composer.
 
-## Installation & updates
+### Installation
+1.  **Clone the repository**
+2.  **Install Dependencies:**
+    ```bash
+    composer install
+    ```
+3.  **Environment Configuration:**
+    ```bash
+    cp env .env
+    ```
+    Configure your database and `app.baseURL` in `.env`.
+4.  **Run Migrations:**
+    ```bash
+    php spark migrate
+    ```
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+### Running the App
+```bash
+php spark serve
+```
+Visit `http://localhost:8080`.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+## Documentation
+UML diagrams are available in the `docs/` folder in `.drawio` format:
+- `er_diagram.drawio`
+- `class_diagram.drawio`
+- `use_case_diagram.drawio`
+- `activity_diagram.drawio`
+- `sequence_diagram.drawio`
 
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 8.2 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+## License
+MIT
