@@ -46,14 +46,16 @@ class BarangController extends BaseController
         $db = \Config\Database::connect();
         $db->transStart();
 
-        $id_barang = $this->barangModel->insert([
+        $this->barangModel->insert([
             'id_kodering' => $this->request->getPost('id_kodering'),
             'nama_barang' => $this->request->getPost('nama_barang'),
             'satuan'      => $this->request->getPost('satuan'),
             'stok'        => $this->request->getPost('stok') ?? 0,
         ]);
 
-        $this->hargaModel->save([
+        $id_barang = $this->barangModel->getInsertID();
+
+        $this->hargaModel->insert([
             'id_barang'   => $id_barang,
             'harga_beli'  => $this->request->getPost('harga_beli'),
         ]);
