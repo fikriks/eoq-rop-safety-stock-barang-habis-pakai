@@ -5,6 +5,19 @@
 <?= $this->section('header') ?>Analisis EOQ & ROP (Prediksi Bulanan)<?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+<?php 
+$bulan_indo = [1=>'Januari', 2=>'Februari', 3=>'Maret', 4=>'April', 5=>'Mei', 6=>'Juni', 7=>'Juli', 8=>'Agustus', 9=>'September', 10=>'Oktober', 11=>'November', 12=>'Desember'];
+$targetDateStr = "$tahun-" . str_pad($bulan, 2, '0', STR_PAD_LEFT) . "-01";
+$endDate = date('Y-m-t', strtotime("$targetDateStr -1 month"));
+$startDate = date('Y-m-d', strtotime("$endDate -1 year +1 day"));
+
+$start_m = (int)date('m', strtotime($startDate));
+$start_y = date('Y', strtotime($startDate));
+$end_m = (int)date('m', strtotime($endDate));
+$end_y = date('Y', strtotime($endDate));
+
+$rentang_data_historis = $bulan_indo[$start_m] . " " . $start_y . " s/d " . $bulan_indo[$end_m] . " " . $end_y;
+?>
 <div class="row">
     <!-- Filter Periode -->
     <div class="col-12 mb-4">
@@ -50,24 +63,83 @@
                 <p class="small text-muted mb-0">Klik tombol <strong>Detail</strong> pada tabel untuk melihat rincian angka setiap barang.</p>
             </div>
             <div class="card-body p-4">
-                <div class="row g-4 text-center">
+                <div class="row g-4">
+                    <!-- EOQ -->
                     <div class="col-md-4">
-                        <div class="p-2 border rounded bg-light mb-2">
-                            <code class="text-dark fw-800" style="font-size: 0.9rem;">EOQ = sqrt((2 * Dm * S) / Hm)</code>
+                        <div class="p-3 border rounded bg-light h-100">
+                            <div class="text-center mb-3">
+                                <span class="badge bg-primary text-white fw-bold mb-2">METODE 1</span>
+                                <h6 class="fw-800 text-dark mb-2">EOQ (Economic Order Quantity)</h6>
+                                <div class="p-2 border rounded bg-white my-2">
+                                    <code class="text-dark fw-800" style="font-size: 0.9rem;">EOQ = &radic;((2 * Dm * S) / Hm)</code>
+                                </div>
+                                <p class="small text-muted fw-bold mb-0">Jumlah pesanan paling ekonomis</p>
+                            </div>
+                            <hr class="my-2">
+                            <p class="small text-muted mb-2" style="font-size: 0.75rem; text-align: justify; line-height: 1.4;">
+                                Berfungsi untuk menentukan jumlah kuantiti pesanan optimal yang meminimalkan total biaya persediaan (biaya pemesanan + biaya penyimpanan).
+                            </p>
+                            <div class="small fw-600 text-muted" style="font-size: 0.72rem;">
+                                <strong class="text-dark">Keterangan Variabel:</strong>
+                                <ul class="ps-3 mt-1 mb-0" style="line-height: 1.4;">
+                                    <li><strong class="text-dark">Dm (Demand Month):</strong> Rata-rata permintaan bulanan (dari riwayat transaksi keluar).</li>
+                                    <li><strong class="text-dark">S (Setup/Order Cost):</strong> Biaya pemesanan setiap kali transaksi dilakukan (default: Rp 50.000).</li>
+                                    <li><strong class="text-dark">Hm (Holding Cost Month):</strong> Biaya penyimpanan per unit per bulan (10% harga beli barang per tahun / 12).</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p class="small text-muted mb-0">Jumlah pesanan paling ekonomis</p>
                     </div>
+                    
+                    <!-- Safety Stock -->
                     <div class="col-md-4">
-                        <div class="p-2 border rounded bg-light mb-2">
-                            <code class="text-dark fw-800" style="font-size: 0.9rem;">SS = Z * std_dev * sqrt(lt)</code>
+                        <div class="p-3 border rounded bg-light h-100">
+                            <div class="text-center mb-3">
+                                <span class="badge bg-secondary text-white fw-bold mb-2">METODE 2</span>
+                                <h6 class="fw-800 text-dark mb-2">Safety Stock (SS)</h6>
+                                <div class="p-2 border rounded bg-white my-2">
+                                    <code class="text-dark fw-800" style="font-size: 0.9rem;">SS = Z * std_dev * &radic;(lt)</code>
+                                </div>
+                                <p class="small text-muted fw-bold mb-0">Stok cadangan pengaman</p>
+                            </div>
+                            <hr class="my-2">
+                            <p class="small text-muted mb-2" style="font-size: 0.75rem; text-align: justify; line-height: 1.4;">
+                                Persediaan minimum tambahan yang dipelihara untuk mencegah terjadinya kehabisan persediaan (stockout) akibat fluktuasi permintaan harian.
+                            </p>
+                            <div class="small fw-600 text-muted" style="font-size: 0.72rem;">
+                                <strong class="text-dark">Keterangan Variabel:</strong>
+                                <ul class="ps-3 mt-1 mb-0" style="line-height: 1.4;">
+                                    <li><strong class="text-dark">Z:</strong> Faktor tingkat pelayanan (konstanta 1.65 mewakili tingkat pelayanan 95%).</li>
+                                    <li><strong class="text-dark">std_dev:</strong> Standar deviasi dari penggunaan harian riil (mengukur variabilitas pemakaian).</li>
+                                    <li><strong class="text-dark">lt (Lead Time):</strong> Waktu tunggu kiriman dari supplier (default: 3 hari).</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p class="small text-muted mb-0">Stok cadangan pengaman</p>
                     </div>
+                    
+                    <!-- ROP -->
                     <div class="col-md-4">
-                        <div class="p-2 border rounded bg-light mb-2">
-                            <code class="text-dark fw-800" style="font-size: 0.9rem;">ROP = (lt * d_avg) + SS</code>
+                        <div class="p-3 border rounded bg-light h-100">
+                            <div class="text-center mb-3">
+                                <span class="badge bg-dark text-white fw-bold mb-2">METODE 3</span>
+                                <h6 class="fw-800 text-dark mb-2">Reorder Point (ROP)</h6>
+                                <div class="p-2 border rounded bg-white my-2">
+                                    <code class="text-dark fw-800" style="font-size: 0.9rem;">ROP = (lt * d_avg) + SS</code>
+                                </div>
+                                <p class="small text-muted fw-bold mb-0">Titik pemesanan kembali</p>
+                            </div>
+                            <hr class="my-2">
+                            <p class="small text-muted mb-2" style="font-size: 0.75rem; text-align: justify; line-height: 1.4;">
+                                Level persediaan di mana tindakan pemesanan kembali harus segera dipicu untuk menghindari kehabisan stok sebelum kiriman baru tiba.
+                            </p>
+                            <div class="small fw-600 text-muted" style="font-size: 0.72rem;">
+                                <strong class="text-dark">Keterangan Variabel:</strong>
+                                <ul class="ps-3 mt-1 mb-0" style="line-height: 1.4;">
+                                    <li><strong class="text-dark">lt (Lead Time):</strong> Waktu tunggu kiriman dari supplier (default: 3 hari).</li>
+                                    <li><strong class="text-dark">d_avg:</strong> Rata-rata jumlah pemakaian barang per hari (total pemakaian setahun / 365).</li>
+                                    <li><strong class="text-dark">SS:</strong> Nilai Safety Stock (stok pengaman) yang telah dihitung sebelumnya.</li>
+                                </ul>
+                            </div>
                         </div>
-                        <p class="small text-muted mb-0">Titik pemesanan kembali</p>
                     </div>
                 </div>
             </div>
@@ -147,6 +219,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body px-4 pb-4">
+                <div class="alert bg-light border-0 small mb-4" style="border-radius: 10px;">
+                    <div class="row">
+                        <div class="col-md-6 mb-2 mb-md-0">
+                            <span class="text-muted fw-bold d-block uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Bulan & Tahun Prediksi:</span>
+                            <strong class="text-dark fs-6"><?= strtoupper($bulan_indo[$bulan]) ?> <?= $tahun ?></strong>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="text-muted fw-bold d-block uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Rentang Data Historis Penggunaan:</span>
+                            <strong class="text-dark fs-6"><?= strtoupper($rentang_data_historis) ?></strong>
+                        </div>
+                    </div>
+                    <hr class="my-2" style="border-color: #ddd;">
+                    <p class="m-0 text-muted" style="font-size: 0.7rem; line-height: 1.45;">
+                        <i class="bi bi-info-circle-fill text-primary me-1"></i> Data historis penggunaan (<strong>Transaksi Keluar</strong>) ditarik dari rentang 12 bulan terakhir sebelum periode prediksi untuk menghasilkan perhitungan EOQ, Safety Stock, dan ROP secara presisi.
+                    </p>
+                </div>
                 <div class="row g-4">
                     <div class="col-md-6">
                         <h6 class="fw-800 small text-muted uppercase mb-3">DATA INPUT (DARI SISTEM)</h6>

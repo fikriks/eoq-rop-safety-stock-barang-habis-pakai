@@ -61,6 +61,7 @@
                         </a>
                     </li>
                     
+                    <?php if (session()->get('peran') === 'ADMIN'): ?>
                     <h6 class="sidebar-heading">Master Data</h6>
                     <li class="nav-item">
                         <a class="nav-link <?= (url_is('kodering*')) ? 'active' : '' ?>" href="/kodering">
@@ -82,6 +83,7 @@
                             <i class="bi bi-truck"></i> Supplier
                         </a>
                     </li>
+                    <?php endif; ?>
                     
                     <h6 class="sidebar-heading">Transaksi</h6>
                     <li class="nav-item">
@@ -95,12 +97,14 @@
                         </a>
                     </li>
                     
+                    <?php if (session()->get('peran') === 'ADMIN'): ?>
                     <h6 class="sidebar-heading">Analisis Stok</h6>
                     <li class="nav-item">
                         <a class="nav-link <?= (url_is('analisis*')) ? 'active' : '' ?>" href="/analisis">
                             <i class="bi bi-calculator"></i> Perhitungan EOQ/ROP
                         </a>
                     </li>
+                    <?php endif; ?>
                     
                     <h6 class="sidebar-heading">Laporan</h6>
                     <li class="nav-item">

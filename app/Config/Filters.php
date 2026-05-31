@@ -35,6 +35,7 @@ class Filters extends BaseFilters
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
         'auth'          => \App\Filters\AuthFilter::class,
+        'admin'         => \App\Filters\AdminFilter::class,
     ];
 
     /**
@@ -114,7 +115,16 @@ class Filters extends BaseFilters
             'barang*', 
             'harga*', 
             'supplier*', 
-            'transaksi*'
+            'transaksi*',
+            'analisis*',
+            'laporan*'
+        ]],
+        'admin' => ['before' => [
+            'kodering*',
+            'barang*',
+            'harga*',
+            'supplier*',
+            'analisis*'
         ]],
     ];
 }

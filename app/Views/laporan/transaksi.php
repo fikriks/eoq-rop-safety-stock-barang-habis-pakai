@@ -63,9 +63,11 @@
                         <button type="submit" class="btn btn-dark px-4 flex-grow-1">
                             <i class="bi bi-filter me-2"></i>Filter Data
                         </button>
+                        <?php if (session()->get('peran') === 'ADMIN'): ?>
                         <button type="button" class="btn btn-light border px-4" onclick="window.print()">
                             <i class="bi bi-printer me-2"></i>Cetak
                         </button>
+                        <?php endif; ?>
                     </div>
                 </form>
             </div>

@@ -58,9 +58,11 @@
                     <h6 class="m-0 fw-800 text-dark">DATA PERSEDIAAN</h6>
                     <p class="small text-muted mb-0">Total stok fisik yang tercatat di sistem.</p>
                 </div>
+                <?php if (session()->get('peran') === 'ADMIN'): ?>
                 <button class="btn btn-dark px-4" onclick="window.print()">
                     <i class="bi bi-printer me-2"></i>Cetak Laporan
                 </button>
+                <?php endif; ?>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
