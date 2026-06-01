@@ -9,7 +9,7 @@ class TransaksiModel extends Model
     protected $table            = 'transaksi';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['id_barang', 'id_pengguna', 'tipe', 'jumlah', 'keterangan', 'tgl_transaksi', 'dibuat_pada', 'diperbarui_pada'];
+    protected $allowedFields    = ['id_barang', 'id_pengguna', 'id_harga', 'id_supplier', 'tipe', 'jumlah', 'keterangan', 'tgl_transaksi', 'dibuat_pada', 'diperbarui_pada'];
 
     // Dates
     protected $useTimestamps = true;
