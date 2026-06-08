@@ -53,7 +53,7 @@
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
+                    <table class="table table-hover align-middle mb-0 datatable">
                         <thead>
                             <tr class="bg-light">
                                 <th class="ps-4 py-3 border-0 text-muted small fw-800">TANGGAL</th>
@@ -98,13 +98,6 @@
                     </table>
                 </div>
             </div>
-            <div class="card-footer bg-white border-0 py-3 px-4 d-flex justify-content-between align-items-center">
-                <div class="small text-muted fw-600">
-                    Menampilkan <?= count($transaksi) ?> data.
-                </div>
-                <div class="custom-pagination">
-                    <?= $pager->links('default', 'bootstrap_full') ?>
-                </div>
             </div>
         </div>
     </div>
@@ -228,6 +221,16 @@ function confirmDelete(id, nama, jumlah) {
     document.getElementById('del_jumlah').textContent = jumlah;
     document.getElementById('del_link').href = '/transaksi/hapus/' + id;
     new bootstrap.Modal(document.getElementById('modalDelete')).show();
+}
+
+function filterSelect(inputEl, selectId) {
+    var filter = inputEl.value.toUpperCase();
+    var select = document.getElementById(selectId);
+    var options = select.options;
+    for (var i = 1; i < options.length; i++) {
+        var txt = options[i].textContent || options[i].innerText;
+        options[i].style.display = txt.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
+    }
 }
 </script>
 <?= $this->endSection() ?>

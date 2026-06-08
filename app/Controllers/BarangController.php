@@ -34,8 +34,8 @@ class BarangController extends BaseController
         }
 
         $data = [
-            'barang' => $barang,
-            'kodering' => $this->koderingModel->findAll(),
+            'barang'    => $barang,
+            'kodering'  => $this->koderingModel->findAll(),
         ];
         return view('barang/index', $data);
     }

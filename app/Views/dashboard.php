@@ -79,7 +79,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center py-3 border-0 border-bottom">
                                 <div>
                                     <div class="fw-800 text-uppercase small"><?= $notif['nama_barang'] ?></div>
-                                    <div class="small text-danger fw-bold">Sisa: <?= $notif['stok'] ?> (ROP: <?= round($notif['rop']) ?>)</div>
+                                    <div class="small text-danger fw-bold">Sisa: <?= $notif['stok'] ?> (ROP: <?= number_format($notif['rop'], 2, ',', '.') ?>)</div>
                                 </div>
                             </li>
                         <?php endforeach; ?>

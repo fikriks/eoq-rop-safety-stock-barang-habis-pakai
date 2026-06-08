@@ -122,5 +122,8 @@ _modules/*
 # Visual Studio Code
 .vscode/
 
+# CommandCode
+.commandcode/
+
 /results/
 /phpunit*.xml

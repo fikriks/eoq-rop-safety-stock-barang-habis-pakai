@@ -55,9 +55,6 @@
                     </table>
                 </div>
             </div>
-            <div class="card-footer bg-white border-0 py-3 px-4">
-                <small class="text-muted fw-600">Total: <?= count($kodering) ?> Kode Rekening</small>
-            </div>
         </div>
     </div>
 </div>

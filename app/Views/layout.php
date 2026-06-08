@@ -14,6 +14,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- DataTables + Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css">
     <!-- Notyf CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     
@@ -134,11 +136,33 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.datatable').forEach(function (table) {
+        var dt = new DataTable(table, {
+            language: {
+                search: 'Cari:',
+                lengthMenu: '_MENU_ data per halaman',
+                zeroRecords: 'Tidak ditemukan',
+                info: 'Menampilkan _START_ s/d _END_ dari _TOTAL_ data',
+                infoEmpty: '',
+                infoFiltered: '(difilter dari _MAX_ data)',
+                paginate: { first: 'Awal', last: 'Akhir', next: '»', previous: '«' }
+            },
+            pageLength: 25,
+            lengthMenu: [10, 25, 50, 100],
+            order: [],
+        });
+    });
+});
+
     // Sidebar Toggle Logic
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebarMenu = document.getElementById('sidebarMenu');

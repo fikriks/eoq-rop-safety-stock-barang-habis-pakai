@@ -28,7 +28,7 @@
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
+                    <table class="table table-hover align-middle mb-0 datatable">
                         <thead>
                             <tr class="bg-light">
                                 <th class="ps-4 py-3 border-0 text-muted small fw-800">NAMA BARANG</th>
@@ -83,9 +83,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="card-footer bg-white border-0 py-3 px-4">
-                <small class="text-muted fw-600">Total: <?= count($barang) ?> Jenis Barang</small>
             </div>
         </div>
     </div>

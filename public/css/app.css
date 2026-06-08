@@ -211,3 +211,142 @@ footer {
     font-weight: 700;
     font-size: 0.75rem;
 }
+
+/* =====================================================
+   DataTables Styling Overrides
+   ===================================================== */
+
+/* =====================================================
+   DataTables Styling Overrides
+   ===================================================== */
+
+/* Wrap the whole DT toolbar + table in one clean box */
+.dt-container {
+    padding: 0 1.5rem 1rem;
+}
+.dt-container .table {
+    margin-bottom: 0;
+}
+
+/* --- TOP BAR: length left, search right --- */
+.dt-container > .dt-layout-row:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem 0 0.75rem;
+}
+
+/* "Show X entries" */
+.dt-length {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #6c757d;
+}
+.dt-length select {
+    border: 1px solid #dee2e6 !important;
+    border-radius: 8px !important;
+    padding: 0.35rem 2rem 0.35rem 0.65rem !important;
+    font-weight: 600;
+    font-size: 0.78rem;
+    background: #fff;
+    color: #212529;
+}
+
+/* Search box */
+.dt-search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.dt-search label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #6c757d;
+    margin: 0;
+}
+.dt-search input {
+    border: 1px solid #dee2e6 !important;
+    border-radius: 8px !important;
+    padding: 0.35rem 0.75rem !important;
+    font-size: 0.85rem;
+    font-weight: 500;
+    min-width: 200px;
+    color: #212529;
+}
+.dt-search input:focus {
+    border-color: #000 !important;
+    box-shadow: none;
+    outline: none;
+}
+
+/* --- BOTTOM BAR: info left, pagination right --- */
+.dt-container > .dt-layout-row:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+/* Info text: "Menampilkan 1 s/d 25 dari 100 data" */
+.dt-info {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #6c757d;
+    margin: 0;
+    padding: 0;
+}
+
+/* Pagination block */
+.dt-paging {
+    margin: 0 !important;
+}
+.dt-paging .pagination {
+    gap: 4px;
+    margin: 0;
+}
+.dt-paging .page-item .page-link {
+    border: 1px solid #dee2e6;
+    border-radius: 8px !important;
+    padding: 6px 11px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #212529;
+    background: #fff;
+    line-height: 1.4;
+    transition: all 0.12s;
+}
+.dt-paging .page-item.active .page-link {
+    background-color: #000 !important;
+    border-color: #000 !important;
+    color: #fff !important;
+}
+.dt-paging .page-item.disabled .page-link {
+    color: #cdd4da;
+    pointer-events: none;
+}
+.dt-paging .page-item:not(.active):not(.disabled) .page-link:hover {
+    background: #f4f5f6;
+    border-color: #babfc4;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .dt-container > .dt-layout-row:first-child,
+    .dt-container > .dt-layout-row:last-child {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .dt-search input {
+        min-width: 100%;
+    }
+}

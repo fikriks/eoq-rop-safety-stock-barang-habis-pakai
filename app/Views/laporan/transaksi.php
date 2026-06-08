@@ -51,18 +51,29 @@
         <div class="card border-0 shadow-sm mb-4 filter-box" style="border-radius: 12px;">
             <div class="card-body p-4">
                 <form action="/laporan/transaksi" method="get" class="row align-items-end g-3">
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <label class="form-label small fw-800 text-muted">TANGGAL MULAI</label>
                         <input type="date" name="tgl_mulai" class="form-control" value="<?= $tgl_mulai ?>">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <label class="form-label small fw-800 text-muted">TANGGAL SELESAI</label>
                         <input type="date" name="tgl_selesai" class="form-control" value="<?= $tgl_selesai ?>">
                     </div>
-                    <div class="col-md-4 d-flex gap-2">
+                    <div class="col-md-3">
+                        <label class="form-label small fw-800 text-muted">TIPE</label>
+                        <select name="tipe" class="form-select">
+                            <option value="">SEMUA</option>
+                            <option value="MASUK" <?= ($tipe ?? '') === 'MASUK' ? 'selected' : '' ?>>MASUK</option>
+                            <option value="KELUAR" <?= ($tipe ?? '') === 'KELUAR' ? 'selected' : '' ?>>KELUAR</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-flex gap-2">
                         <button type="submit" class="btn btn-dark px-4 flex-grow-1">
-                            <i class="bi bi-filter me-2"></i>Filter Data
+                            <i class="bi bi-filter me-2"></i>Filter
                         </button>
+                        <a href="/laporan/transaksi" class="btn btn-light border px-4">
+                            <i class="bi bi-arrow-clockwise me-2"></i>Reset
+                        </a>
                         <?php if (session()->get('peran') === 'ADMIN'): ?>
                         <button type="button" class="btn btn-light border px-4" onclick="window.print()">
                             <i class="bi bi-printer me-2"></i>Cetak
@@ -84,7 +95,7 @@
         <div class="card border-0 shadow-sm" style="border-radius: 12px;">
             <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
+                    <table class="table table-hover align-middle mb-0 datatable">
                         <thead>
                             <tr class="bg-light">
                                 <th class="ps-4 py-3 border-0 text-muted small fw-800">TANGGAL</th>

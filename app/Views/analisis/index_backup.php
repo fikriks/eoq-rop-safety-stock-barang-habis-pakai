@@ -153,7 +153,7 @@ $rentang_data_historis = $bulan_indo[$start_m] . " " . $start_y . " s/d " . $bul
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0 datatable">
+                    <table class="table table-hover align-middle mb-0">
                         <thead>
                             <tr class="bg-light">
                                 <th class="ps-4 py-3 border-0 text-muted small fw-800">NAMA BARANG</th>
@@ -177,13 +177,13 @@ $rentang_data_historis = $bulan_indo[$start_m] . " " . $start_y . " s/d " . $bul
                                         <div class="small text-muted fw-bold" style="font-size: 0.65rem;"><?= $item['satuan'] ?></div>
                                     </td>
                                     <td class="text-center font-mono fw-800 text-primary">
-                                        <?= $item['eoq'] ? number_format($item['eoq'], 2, ',', '.') : '0' ?>
+                                        <?= $item['eoq'] ? round($item['eoq']) : '0' ?>
                                     </td>
                                     <td class="text-center font-mono text-dark fw-bold">
-                                        <?= $item['stok_pengaman'] ? number_format($item['stok_pengaman'], 2, ',', '.') : '0' ?>
+                                        <?= $item['stok_pengaman'] ? round($item['stok_pengaman']) : '0' ?>
                                     </td>
                                     <td class="text-center font-mono fw-800">
-                                        <?= $item['rop'] ? number_format($item['rop'], 2, ',', '.') : '0' ?>
+                                        <?= $item['rop'] ? round($item['rop']) : '0' ?>
                                     </td>
                                     <td>
                                         <?php if ($item['rop'] && $item['stok'] <= $item['rop']): ?>
@@ -330,9 +330,9 @@ function showDetail(item) {
     document.getElementById('eq_hm').textContent = parseFloat(item.biaya_penyimpanan || 0).toFixed(2);
 
     // Hasil Final
-    document.getElementById('det_eoq_val').textContent = parseFloat(item.eoq || 0).toFixed(2).replace('.', ',') + ' ' + item.satuan;
-    document.getElementById('det_ss_val').textContent = parseFloat(item.stok_pengaman || 0).toFixed(2).replace('.', ',') + ' ' + item.satuan;
-    document.getElementById('det_rop_val').textContent = parseFloat(item.rop || 0).toFixed(2).replace('.', ',') + ' ' + item.satuan;
+    document.getElementById('det_eoq_val').textContent = Math.round(item.eoq || 0) + ' ' + item.satuan;
+    document.getElementById('det_ss_val').textContent = Math.round(item.stok_pengaman || 0) + ' ' + item.satuan;
+    document.getElementById('det_rop_val').textContent = Math.round(item.rop || 0) + ' ' + item.satuan;
     
     document.getElementById('det_tgl').textContent = item.terakhir_dihitung_pada;
 

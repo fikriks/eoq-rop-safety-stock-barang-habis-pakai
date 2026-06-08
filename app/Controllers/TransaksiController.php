@@ -25,8 +25,8 @@ class TransaksiController extends BaseController
 
     public function masuk()
     {
-        $tgl_mulai = $this->request->getGet('tgl_mulai');
-        $tgl_selesai = $this->request->getGet('tgl_selesai');
+        $tgl_mulai      = $this->request->getGet('tgl_mulai');
+        $tgl_selesai    = $this->request->getGet('tgl_selesai');
 
         $query = $this->transaksiModel->select('transaksi.*, barang.nama_barang, pengguna.nama_pengguna, harga_barang.harga_beli, supplier.nama_supplier')
                                       ->join('barang', 'barang.id = transaksi.id_barang')
@@ -35,16 +35,15 @@ class TransaksiController extends BaseController
                                       ->join('supplier', 'supplier.id = transaksi.id_supplier', 'left')
                                       ->where('tipe', 'MASUK');
 
-        if ($tgl_mulai) $query->where('tgl_transaksi >=', $tgl_mulai);
-        if ($tgl_selesai) $query->where('tgl_transaksi <=', $tgl_selesai);
+        if ($tgl_mulai)     $query->where('tgl_transaksi >=', $tgl_mulai);
+        if ($tgl_selesai)   $query->where('tgl_transaksi <=', $tgl_selesai);
 
         $data = [
-            'transaksi'     => $query->orderBy('tgl_transaksi', 'DESC')->paginate(10),
-            'pager'         => $this->transaksiModel->pager,
+            'transaksi'     => $query->orderBy('tgl_transaksi', 'DESC')->findAll(),
             'barang'        => $this->barangModel->findAll(),
             'supplier_list' => $this->supplierModel->findAll(),
             'tgl_mulai'     => $tgl_mulai,
-            'tgl_selesai'   => $tgl_selesai
+            'tgl_selesai'   => $tgl_selesai,
         ];
 
         return view('transaksi/masuk', $data);
@@ -52,7 +51,7 @@ class TransaksiController extends BaseController
 
     public function keluar()
     {
-        $tgl_mulai = $this->request->getGet('tgl_mulai');
+        $tgl_mulai   = $this->request->getGet('tgl_mulai');
         $tgl_selesai = $this->request->getGet('tgl_selesai');
 
         $query = $this->transaksiModel->select('transaksi.*, barang.nama_barang, pengguna.nama_pengguna')
@@ -60,15 +59,14 @@ class TransaksiController extends BaseController
                                       ->join('pengguna', 'pengguna.id = transaksi.id_pengguna')
                                       ->where('tipe', 'KELUAR');
 
-        if ($tgl_mulai) $query->where('tgl_transaksi >=', $tgl_mulai);
+        if ($tgl_mulai)   $query->where('tgl_transaksi >=', $tgl_mulai);
         if ($tgl_selesai) $query->where('tgl_transaksi <=', $tgl_selesai);
 
         $data = [
-            'transaksi'     => $query->orderBy('tgl_transaksi', 'DESC')->paginate(10),
-            'pager'         => $this->transaksiModel->pager,
-            'barang'        => $this->barangModel->findAll(),
-            'tgl_mulai'     => $tgl_mulai,
-            'tgl_selesai'   => $tgl_selesai
+            'transaksi'   => $query->orderBy('tgl_transaksi', 'DESC')->findAll(),
+            'barang'      => $this->barangModel->findAll(),
+            'tgl_mulai'   => $tgl_mulai,
+            'tgl_selesai' => $tgl_selesai,
         ];
 
         return view('transaksi/keluar', $data);

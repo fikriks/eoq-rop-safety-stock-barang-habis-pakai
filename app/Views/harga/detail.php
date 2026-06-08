@@ -24,7 +24,7 @@
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
+                    <table class="table table-hover align-middle mb-0 datatable">
                         <thead>
                             <tr class="bg-light">
                                 <th class="ps-4 py-3 border-0 text-muted small fw-800">TGL DICATAT</th>

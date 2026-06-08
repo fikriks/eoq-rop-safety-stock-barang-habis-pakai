@@ -17,9 +17,18 @@ The project follows the standard CodeIgniter 4 architecture (MVC) and uses Compo
 ### Key Technologies
 - **Framework:** CodeIgniter 4.x
 - **UI Framework:** Bootstrap 5
+- **Table Library:** DataTables 2.x with Bootstrap 5 integration (search, filter, sort, pagination)
 - **Language:** PHP 8.2+
 - **Database:** MySQL/MariaDB (default recommendation for CI4 projects)
 - **Testing:** PHPUnit
+
+### Key Dependencies
+- **jQuery 3.7.x:** Required by DataTables Bootstrap 5 integration (`dataTables.bootstrap5.min.js`). Include jQuery before DataTables JS files.
+- **DataTables 2.x:** Core library for client-side table search, sorting, pagination, and filtering.
+- **ApexCharts:** Dashboard usage chart visualization.
+- **Notyf:** Toast notification for flash messages.
+- **PhpSpreadsheet:** Excel import/export functionality.
+- **Bootstrap Icons:** Icon library.
 
 ## Building and Running
 
@@ -77,9 +86,10 @@ php spark test
 
 ### Styling
 - **CSS Framework:** Bootstrap 5.
+- **Table Library:** DataTables 2.x with Bootstrap 5 integration. Add `class="datatable"` to `<table>` elements. Initialization is handled globally in `app/Views/layout.php` with Indonesian locale. Controller queries should use `findAll()` (no server-side pagination/search) — DataTables handles client-side search, sort, and pagination.
 - **Color Schema:** Black & White (Hitam Putih) dengan kontras tinggi.
 - **Tipografi:** **Plus Jakarta Sans** (Google Fonts) & **JetBrains Mono**.
-- **Layouts:** Gunakan CodeIgniter 4 View Layouts (`app/Views/layout.php`) untuk menjaga konsistensi. Hindari penggunaan border-radius (gunakan sudut tajam) untuk kesan minimalis/brutalist.
+- **Layouts:** Gunakan CodeIgniter 4 View Layouts (`app/Views/layout.php`) untuk menjaga konsistensi.
 
 ### Coding Style
 - Follow **PSR-12** coding standards.
