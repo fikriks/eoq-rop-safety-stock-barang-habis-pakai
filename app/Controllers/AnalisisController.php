@@ -65,4 +65,18 @@ class AnalisisController extends BaseController
         hitung_ulang_analisis($id, $bulan, $tahun);
         return redirect()->to("/analisis?bulan=$bulan&tahun=$tahun")->with('success', 'Analisis berhasil diperbarui.');
     }
+
+    public function hitung_semua_otomatis()
+    {
+        helper('analisis');
+        $bulan = $this->request->getGet('bulan') ?: (int)date('m', strtotime('+1 month'));
+        $tahun = $this->request->getGet('tahun') ?: (int)date('Y', strtotime('+1 month'));
+
+        $allBarang = $this->barangModel->findAll();
+        foreach ($allBarang as $b) {
+            hitung_ulang_analisis($b['id'], $bulan, $tahun);
+        }
+
+        return redirect()->to("/analisis?bulan=$bulan&tahun=$tahun")->with('success', "Semua analisis periode $bulan/$tahun berhasil diperbarui.");
+    }
 }

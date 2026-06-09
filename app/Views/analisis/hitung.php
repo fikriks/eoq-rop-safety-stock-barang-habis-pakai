@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label class="form-label small fw-800 text-muted">KEBUTUHAN TAHUNAN (D) <span class="text-danger">*</span></label>
-                            <input type="number" name="permintaan_tahunan" id="D" class="form-control py-2" value="<?= $analisis['permintaan_tahunan'] ?? '' ?>" placeholder="E.g. 1200" required>
+                            <input type="number" step="any" name="permintaan_tahunan" id="D" class="form-control py-2" value="<?= $analisis['permintaan_tahunan'] ?? '' ?>" placeholder="E.g. 1200" required>
                             <div class="form-text small text-muted">Saran riwayat (1 tahun terakhir): <strong><?= $suggested['D'] ?> unit</strong></div>
                         </div>
                         <div class="col-md-6 mb-3">
@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label small fw-800 text-muted">BIAYA PENYIMPANAN (H) <span class="text-danger">*</span></label>
-                            <input type="number" name="biaya_penyimpanan" id="H" class="form-control py-2" value="<?= $analisis['biaya_penyimpanan'] ?? '' ?>" placeholder="E.g. 5000" required>
+                            <input type="number" step="any" name="biaya_penyimpanan" id="H" class="form-control py-2" value="<?= $analisis['biaya_penyimpanan'] ?? '' ?>" placeholder="E.g. 5000" required>
                             <div class="form-text small text-muted">Saran (10% dari harga terbaru): <strong>Rp <?= number_format($suggested['H'], 0, ',', '.') ?></strong></div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label small fw-800 text-muted">PENGGUNAAN RATA-RATA / HARI <span class="text-danger">*</span></label>
-                            <input type="number" step="0.01" name="permintaan_rata_rata" id="d_avg" class="form-control py-2" value="<?= $analisis['permintaan_rata_rata'] ?? '' ?>" placeholder="E.g. 5" required>
+                            <input type="number" step="any" name="permintaan_rata_rata" id="d_avg" class="form-control py-2" value="<?= $analisis['permintaan_rata_rata'] ?? '' ?>" placeholder="E.g. 5" required>
                             <div class="form-text small text-muted">Saran riwayat: <strong><?= $suggested['d_avg'] ?> unit/hari</strong></div>
                         </div>
                         <div class="col-md-6 mb-3">

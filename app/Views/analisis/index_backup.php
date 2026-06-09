@@ -177,14 +177,15 @@ $rentang_data_historis = $bulan_indo[$start_m] . " " . $start_y . " s/d " . $bul
                                         <div class="small text-muted fw-bold" style="font-size: 0.65rem;"><?= $item['satuan'] ?></div>
                                     </td>
                                     <td class="text-center font-mono fw-800 text-primary">
-                                        <?= $item['eoq'] ? round($item['eoq']) : '0' ?>
+                                        <?= $item['eoq'] ? number_format(ceil($item['eoq']), 0, ',', '.') : '0' ?>
                                     </td>
                                     <td class="text-center font-mono text-dark fw-bold">
-                                        <?= $item['stok_pengaman'] ? round($item['stok_pengaman']) : '0' ?>
+                                        <?= $item['stok_pengaman'] ? number_format(ceil($item['stok_pengaman']), 0, ',', '.') : '0' ?>
                                     </td>
                                     <td class="text-center font-mono fw-800">
-                                        <?= $item['rop'] ? round($item['rop']) : '0' ?>
+                                        <?= $item['rop'] ? number_format(ceil($item['rop']), 0, ',', '.') : '0' ?>
                                     </td>
+
                                     <td>
                                         <?php if ($item['rop'] && $item['stok'] <= $item['rop']): ?>
                                             <span class="badge bg-soft-danger text-danger fw-800" style="font-size: 0.65rem; background-color: #fbe9e7;">PERLU PESAN</span>
@@ -318,21 +319,21 @@ function showDetail(item) {
     document.getElementById('det_nama').textContent = item.nama_barang;
     
     // Data Input
-    document.getElementById('det_dm').textContent = parseFloat(item.permintaan_tahunan || 0).toFixed(2);
+    document.getElementById('det_dm').textContent = parseFloat(item.permintaan_tahunan || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
     document.getElementById('det_s').textContent = 'Rp ' + parseInt(item.biaya_pemesanan || 0).toLocaleString('id-ID');
-    document.getElementById('det_hm').textContent = 'Rp ' + parseFloat(item.biaya_penyimpanan || 0).toFixed(2);
+    document.getElementById('det_hm').textContent = 'Rp ' + parseFloat(item.biaya_penyimpanan || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
     document.getElementById('det_lt').textContent = (item.waktu_tunggu || 0) + ' Hari';
-    document.getElementById('det_davg').textContent = parseFloat(item.permintaan_rata_rata || 0).toFixed(4);
+    document.getElementById('det_davg').textContent = parseFloat(item.permintaan_rata_rata || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
     
     // Rumus breakdown
-    document.getElementById('eq_dm').textContent = parseFloat(item.permintaan_tahunan || 0).toFixed(2);
+    document.getElementById('eq_dm').textContent = parseFloat(item.permintaan_tahunan || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
     document.getElementById('eq_s').textContent = parseInt(item.biaya_pemesanan || 0);
-    document.getElementById('eq_hm').textContent = parseFloat(item.biaya_penyimpanan || 0).toFixed(2);
+    document.getElementById('eq_hm').textContent = parseFloat(item.biaya_penyimpanan || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
 
     // Hasil Final
-    document.getElementById('det_eoq_val').textContent = Math.round(item.eoq || 0) + ' ' + item.satuan;
-    document.getElementById('det_ss_val').textContent = Math.round(item.stok_pengaman || 0) + ' ' + item.satuan;
-    document.getElementById('det_rop_val').textContent = Math.round(item.rop || 0) + ' ' + item.satuan;
+    document.getElementById('det_eoq_val').textContent = Math.ceil(parseFloat(item.eoq || 0)).toLocaleString('id-ID') + ' ' + item.satuan;
+    document.getElementById('det_ss_val').textContent = Math.ceil(parseFloat(item.stok_pengaman || 0)).toLocaleString('id-ID') + ' ' + item.satuan;
+    document.getElementById('det_rop_val').textContent = Math.ceil(parseFloat(item.rop || 0)).toLocaleString('id-ID') + ' ' + item.satuan;
     
     document.getElementById('det_tgl').textContent = item.terakhir_dihitung_pada;
 

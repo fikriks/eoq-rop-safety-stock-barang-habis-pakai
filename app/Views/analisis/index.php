@@ -24,8 +24,8 @@ $rentang_data_historis = $bulan_indo[$start_m] . " " . $start_y . " s/d " . $bul
         <div class="card border-0 shadow-sm" style="border-radius: 12px;">
             <div class="card-body p-4">
                 <form action="/analisis" method="get" class="row align-items-end g-3">
-                    <div class="col-md-4">
-                        <label class="form-label small fw-800 text-muted uppercase">Pilih Bulan Prediksi</label>
+                    <div class="col-md-3">
+                        <label class="form-label small fw-800 text-muted uppercase">Bulan Prediksi</label>
                         <select name="bulan" class="form-select font-mono fw-bold">
                             <?php 
                             $bulan_indo = [1=>'Januari', 2=>'Februari', 3=>'Maret', 4=>'April', 5=>'Mei', 6=>'Juni', 7=>'Juli', 8=>'Agustus', 9=>'September', 10=>'Oktober', 11=>'November', 12=>'Desember'];
@@ -34,7 +34,7 @@ $rentang_data_historis = $bulan_indo[$start_m] . " " . $start_y . " s/d " . $bul
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <label class="form-label small fw-800 text-muted uppercase">Tahun</label>
                         <select name="tahun" class="form-select font-mono fw-bold">
                             <?php for($i=date('Y')-1; $i<=date('Y')+1; $i++): ?>
@@ -42,12 +42,15 @@ $rentang_data_historis = $bulan_indo[$start_m] . " " . $start_y . " s/d " . $bul
                             <?php endfor; ?>
                         </select>
                     </div>
-                    <div class="col-md-5 d-flex gap-2">
-                        <button type="submit" class="btn btn-dark px-4 flex-grow-1" style="height: 42px;">
-                            <i class="bi bi-filter me-2"></i>Tampilkan Analisis
+                    <div class="col-md-7 d-flex gap-2">
+                        <button type="submit" class="btn btn-dark px-3 fw-bold flex-grow-1 text-nowrap" style="height: 42px;">
+                            <i class="bi bi-filter me-1"></i>Filter
                         </button>
-                        <a href="/analisis" class="btn btn-light border px-4" style="height: 42px;">
-                            <i class="bi bi-arrow-clockwise me-2"></i>Reset
+                        <a href="/analisis/hitung-semua?bulan=<?= $bulan ?>&tahun=<?= $tahun ?>" class="btn btn-primary px-3 fw-bold flex-grow-1 text-nowrap" style="height: 42px;">
+                            <i class="bi bi-calculator me-1"></i>Hitung Ulang Semua
+                        </a>
+                        <a href="/analisis" class="btn btn-light border px-3 fw-bold flex-grow-1 text-nowrap" style="height: 42px;">
+                            <i class="bi bi-arrow-clockwise me-1"></i>Reset
                         </a>
                     </div>
                 </form>
@@ -177,13 +180,13 @@ $rentang_data_historis = $bulan_indo[$start_m] . " " . $start_y . " s/d " . $bul
                                         <div class="small text-muted fw-bold" style="font-size: 0.65rem;"><?= $item['satuan'] ?></div>
                                     </td>
                                     <td class="text-center font-mono fw-800 text-primary">
-                                        <?= $item['eoq'] ? number_format($item['eoq'], 2, ',', '.') : '0' ?>
+                                        <?= $item['eoq'] ? number_format(ceil($item['eoq']), 0, ',', '.') : '0' ?>
                                     </td>
                                     <td class="text-center font-mono text-dark fw-bold">
-                                        <?= $item['stok_pengaman'] ? number_format($item['stok_pengaman'], 2, ',', '.') : '0' ?>
+                                        <?= $item['stok_pengaman'] ? number_format(ceil($item['stok_pengaman']), 0, ',', '.') : '0' ?>
                                     </td>
                                     <td class="text-center font-mono fw-800">
-                                        <?= $item['rop'] ? number_format($item['rop'], 2, ',', '.') : '0' ?>
+                                        <?= $item['rop'] ? number_format(ceil($item['rop']), 0, ',', '.') : '0' ?>
                                     </td>
                                     <td>
                                         <?php if ($item['rop'] && $item['stok'] <= $item['rop']): ?>
@@ -318,21 +321,21 @@ function showDetail(item) {
     document.getElementById('det_nama').textContent = item.nama_barang;
     
     // Data Input
-    document.getElementById('det_dm').textContent = parseFloat(item.permintaan_tahunan || 0).toFixed(2);
+    document.getElementById('det_dm').textContent = parseFloat(item.permintaan_tahunan || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
     document.getElementById('det_s').textContent = 'Rp ' + parseInt(item.biaya_pemesanan || 0).toLocaleString('id-ID');
-    document.getElementById('det_hm').textContent = 'Rp ' + parseFloat(item.biaya_penyimpanan || 0).toFixed(2);
+    document.getElementById('det_hm').textContent = 'Rp ' + parseFloat(item.biaya_penyimpanan || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
     document.getElementById('det_lt').textContent = (item.waktu_tunggu || 0) + ' Hari';
-    document.getElementById('det_davg').textContent = parseFloat(item.permintaan_rata_rata || 0).toFixed(4);
+    document.getElementById('det_davg').textContent = parseFloat(item.permintaan_rata_rata || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
     
     // Rumus breakdown
-    document.getElementById('eq_dm').textContent = parseFloat(item.permintaan_tahunan || 0).toFixed(2);
+    document.getElementById('eq_dm').textContent = parseFloat(item.permintaan_tahunan || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
     document.getElementById('eq_s').textContent = parseInt(item.biaya_pemesanan || 0);
-    document.getElementById('eq_hm').textContent = parseFloat(item.biaya_penyimpanan || 0).toFixed(2);
+    document.getElementById('eq_hm').textContent = parseFloat(item.biaya_penyimpanan || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
 
     // Hasil Final
-    document.getElementById('det_eoq_val').textContent = parseFloat(item.eoq || 0).toFixed(2).replace('.', ',') + ' ' + item.satuan;
-    document.getElementById('det_ss_val').textContent = parseFloat(item.stok_pengaman || 0).toFixed(2).replace('.', ',') + ' ' + item.satuan;
-    document.getElementById('det_rop_val').textContent = parseFloat(item.rop || 0).toFixed(2).replace('.', ',') + ' ' + item.satuan;
+    document.getElementById('det_eoq_val').textContent = Math.ceil(parseFloat(item.eoq || 0)).toLocaleString('id-ID') + ' ' + item.satuan;
+    document.getElementById('det_ss_val').textContent = Math.ceil(parseFloat(item.stok_pengaman || 0)).toLocaleString('id-ID') + ' ' + item.satuan;
+    document.getElementById('det_rop_val').textContent = Math.ceil(parseFloat(item.rop || 0)).toLocaleString('id-ID') + ' ' + item.satuan;
     
     document.getElementById('det_tgl').textContent = item.terakhir_dihitung_pada;
 
