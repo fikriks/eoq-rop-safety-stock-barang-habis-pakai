@@ -100,6 +100,7 @@ if (!function_exists('hitung_ulang_analisis')) {
             'biaya_penyimpanan'     => $H_month,
             'waktu_tunggu'          => $lt_avg,
             'permintaan_rata_rata'  => $d_avg_day,
+            'standar_deviasi'       => $std_dev_day,
             'eoq'                   => $eoq,
             'stok_pengaman'         => $safety_stock,
             'rop'                   => $rop,

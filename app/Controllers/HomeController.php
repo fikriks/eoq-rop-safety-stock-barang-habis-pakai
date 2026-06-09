@@ -14,8 +14,14 @@ class HomeController extends BaseController
         $transaksiModel = new TransaksiModel();
         $analisisModel = new AnalisisStokModel();
 
-        // 1. Hitung Stok Rendah
+        // Periode analisis saat ini (untuk filter ROP)
+        $bulan = (int)date('m');
+        $tahun = (int)date('Y');
+
+        // 1. Hitung Stok Rendah (Hanya untuk bulan ini)
         $stokRendah = $barangModel->join('analisis_stok', 'analisis_stok.id_barang = barang.id')
+                                  ->where('analisis_stok.bulan', $bulan)
+                                  ->where('analisis_stok.tahun', $tahun)
                                   ->where('barang.stok <= analisis_stok.rop')
                                   ->countAllResults();
 
@@ -25,9 +31,11 @@ class HomeController extends BaseController
         // 3. Total Jenis Barang
         $totalBarang = $barangModel->countAllResults();
 
-        // 4. Data Notifikasi Stok Kritis
+        // 4. Data Notifikasi Stok Kritis (Hanya untuk bulan ini)
         $notifikasi = $barangModel->select('barang.nama_barang, barang.stok, analisis_stok.rop')
                                   ->join('analisis_stok', 'analisis_stok.id_barang = barang.id')
+                                  ->where('analisis_stok.bulan', $bulan)
+                                  ->where('analisis_stok.tahun', $tahun)
                                   ->where('barang.stok <= analisis_stok.rop')
                                   ->limit(5)
                                   ->findAll();

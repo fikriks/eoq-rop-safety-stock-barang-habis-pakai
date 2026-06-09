@@ -5,6 +5,11 @@
     *   Memperbarui `README.md` dengan informasi proyek yang relevan dan panduan instalasi.
     *   Sinkronisasi dokumentasi teknis dengan fitur terbaru yang diimplementasikan.
     *   Pengecekan akhir pada diagram UML (Activity, Sequence, Class) untuk memastikan konsistensi alur sistem.
+*   **Enhanced Analysis Precision & Transparency:**
+    *   Menampilkan nilai **Standar Deviasi Harian (std_dev)** secara eksplisit pada modal detail analisis.
+    *   Memperbarui breakdown rumus pada modal detail (EOQ, Safety Stock, ROP) dengan angka variabel riil untuk transparansi kalkulasi.
+    *   Memperbaiki bug penyimpanan `standar_deviasi` pada database melalui pembaruan `AnalisisStokModel`.
+    *   Optimasi dashboard untuk memfilter notifikasi stok kritis berdasarkan periode bulan berjalan (mencegah data duplikat).
 *   **Comprehensive UML Documentation:**
     *   Membuat **ER Diagram (ERD)** yang mencakup 7 tabel utama beserta relasinya.
     *   Membuat **Class Diagram** yang memetakan arsitektur MVC (Controllers & Models).

@@ -45,7 +45,7 @@ class AnalisisController extends BaseController
             'barang' => $this->barangModel->select('barang.*, kodering.nama_rekening, 
                                             analisis_stok.permintaan_tahunan, analisis_stok.biaya_pemesanan, 
                                             analisis_stok.biaya_penyimpanan, analisis_stok.waktu_tunggu, 
-                                            analisis_stok.permintaan_rata_rata, analisis_stok.eoq, 
+                                            analisis_stok.permintaan_rata_rata, analisis_stok.standar_deviasi, analisis_stok.eoq, 
                                             analisis_stok.stok_pengaman, analisis_stok.rop, 
                                             analisis_stok.terakhir_dihitung_pada')
                                           ->join('kodering', 'kodering.id = barang.id_kodering')

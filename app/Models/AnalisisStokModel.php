@@ -19,6 +19,7 @@ class AnalisisStokModel extends Model
         'waktu_tunggu', 
         'permintaan_maksimum', 
         'permintaan_rata_rata', 
+        'standar_deviasi',
         'waktu_tunggu_maksimum', 
         'eoq', 
         'stok_pengaman', 

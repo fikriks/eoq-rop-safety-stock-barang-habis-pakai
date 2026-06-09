@@ -262,6 +262,10 @@ $rentang_data_historis = $bulan_indo[$start_m] . " " . $start_y . " s/d " . $bul
                                 <td class="fw-bold">Rata-rata Penggunaan Harian (d_avg)</td>
                                 <td class="font-mono text-end" id="det_davg">0</td>
                             </tr>
+                            <tr>
+                                <td class="fw-bold">Standar Deviasi Harian (std_dev)</td>
+                                <td class="font-mono text-end" id="det_stddev">0</td>
+                            </tr>
                         </table>
                         <p class="text-muted" style="font-size: 0.65rem;">* Data Dm & d_avg ditarik dari riwayat transaksi 12 bulan terakhir sebelum periode prediksi.</p>
                     </div>
@@ -284,7 +288,7 @@ $rentang_data_historis = $bulan_indo[$start_m] . " " . $start_y . " s/d " . $bul
                                 <span class="fw-800 text-dark fs-5" id="det_ss_val">0</span>
                             </div>
                             <p class="m-0 text-muted" style="font-size: 0.65rem;">
-                                Rumus: Z(1.65) * std_dev * sqrt(lt)
+                                Rumus: Z(1.65) * <span id="ss_stddev">0</span> * sqrt(<span id="ss_lt">0</span>)
                             </p>
                         </div>
 
@@ -294,7 +298,7 @@ $rentang_data_historis = $bulan_indo[$start_m] . " " . $start_y . " s/d " . $bul
                                 <span class="fw-800 fs-4" id="det_rop_val">0</span>
                             </div>
                             <p class="m-0 text-white-50" style="font-size: 0.65rem;">
-                                Rumus: (lt * d_avg) + Safety Stock
+                                Rumus: (<span id="rop_lt">0</span> * <span id="rop_davg">0</span>) + <span id="rop_ss">0</span>
                             </p>
                         </div>
                     </div>
@@ -326,11 +330,19 @@ function showDetail(item) {
     document.getElementById('det_hm').textContent = 'Rp ' + parseFloat(item.biaya_penyimpanan || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
     document.getElementById('det_lt').textContent = (item.waktu_tunggu || 0) + ' Hari';
     document.getElementById('det_davg').textContent = parseFloat(item.permintaan_rata_rata || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
+    document.getElementById('det_stddev').textContent = parseFloat(item.standar_deviasi || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
     
     // Rumus breakdown
     document.getElementById('eq_dm').textContent = parseFloat(item.permintaan_tahunan || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
     document.getElementById('eq_s').textContent = parseInt(item.biaya_pemesanan || 0);
     document.getElementById('eq_hm').textContent = parseFloat(item.biaya_penyimpanan || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
+    
+    document.getElementById('ss_stddev').textContent = parseFloat(item.standar_deviasi || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
+    document.getElementById('ss_lt').textContent = item.waktu_tunggu || 0;
+
+    document.getElementById('rop_lt').textContent = item.waktu_tunggu || 0;
+    document.getElementById('rop_davg').textContent = parseFloat(item.permintaan_rata_rata || 0).toLocaleString('id-ID', { minimumFractionDigits: 2, maximumFractionDigits: 10 });
+    document.getElementById('rop_ss').textContent = Math.ceil(parseFloat(item.stok_pengaman || 0)).toLocaleString('id-ID');
 
     // Hasil Final
     document.getElementById('det_eoq_val').textContent = Math.ceil(parseFloat(item.eoq || 0)).toLocaleString('id-ID') + ' ' + item.satuan;
