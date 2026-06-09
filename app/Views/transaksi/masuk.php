@@ -162,8 +162,8 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label small fw-800 text-muted uppercase">Pilih Barang <span class="text-danger">*</span></label>
-                            <select name="id_barang" class="form-select" required>
-                                <option value="" selected disabled>-- Pilih Barang --</option>
+                            <select name="id_barang" class="form-select select2-barang" required>
+                                <option value=""></option>
                                 <?php foreach ($barang as $b): ?>
                                     <option value="<?= $b['id'] ?>"><?= $b['nama_barang'] ?> (Stok: <?= $b['stok'] ?>)</option>
                                 <?php endforeach; ?>
@@ -171,8 +171,8 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label small fw-800 text-muted uppercase">Supplier <span class="text-danger">*</span></label>
-                            <select name="id_supplier" class="form-select" required>
-                                <option value="" selected disabled>-- Pilih Supplier --</option>
+                            <select name="id_supplier" class="form-select select2-supplier" required>
+                                <option value=""></option>
                                 <?php foreach ($supplier_list as $s): ?>
                                     <option value="<?= $s['id'] ?>"><?= $s['nama_supplier'] ?></option>
                                 <?php endforeach; ?>
@@ -200,8 +200,8 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0 pb-4 px-4">
-                    <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-dark px-4">Simpan Transaksi</button>
+                    <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal"><i class="bi bi-x-lg me-2"></i>Batal</button>
+                    <button type="submit" class="btn btn-dark px-4"><i class="bi bi-save me-2"></i>Simpan Transaksi</button>
                 </div>
             </form>
         </div>
@@ -242,14 +242,22 @@ function confirmDelete(id, nama, jumlah) {
     new bootstrap.Modal(document.getElementById('modalDelete')).show();
 }
 
-function filterSelect(inputEl, selectId) {
-    var filter = inputEl.value.toUpperCase();
-    var select = document.getElementById(selectId);
-    var options = select.options;
-    for (var i = 1; i < options.length; i++) {
-        var txt = options[i].textContent || options[i].innerText;
-        options[i].style.display = txt.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
-    }
-}
+$('#modalTambah').on('shown.bs.modal', function () {
+    $('.select2-barang').select2({
+        dropdownParent: $('#modalTambah'),
+        theme: 'bootstrap-5',
+        placeholder: '-- Pilih Barang --',
+        allowClear: true,
+        width: '100%'
+    });
+
+    $('.select2-supplier').select2({
+        dropdownParent: $('#modalTambah'),
+        theme: 'bootstrap-5',
+        placeholder: '-- Pilih Supplier --',
+        allowClear: true,
+        width: '100%'
+    });
+});
 </script>
 <?= $this->endSection() ?>
